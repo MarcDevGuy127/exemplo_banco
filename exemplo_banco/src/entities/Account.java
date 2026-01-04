@@ -1,25 +1,20 @@
 package entities;
 
 public class Account {
-	public Integer number;
+	public int number;
 	public String name;
 	public double balance;
 	
-	public Account() {}
+	//receber conta e titular
+	public Account(int number, String name) {
+		this.number = number;
+		this.name = name;
+	}
 
-	public Account(Integer number, String name, double balance) {
+	public Account(int number, String name, double initialDeposit) {
 		this.number = number;
 		this.name = name;
-		this.balance = balance;
-	}
-	
-	public Account(Integer number, String name) {
-		this.number = number;
-		this.name = name;
-	}
-	
-	public Integer getNumber() {
-		return number;
+		deposit(initialDeposit); // encapsulando  um metodo para facilitar manutencao
 	}
 
 	public String getName() {
@@ -30,19 +25,19 @@ public class Account {
 		this.name = name;
 	}
 
-	public Double getBalance() {
+	public int getNumber() {
+		return number;
+	}
+
+	public double getBalance() {
 		return balance;
 	}
-
-	public void setBalance(Double balance) {
-		this.balance = balance;
-	}
-
-	public double doDeposit(double balance) {
-		return this.balance += balance;
+	
+	public void deposit(double amount) {
+		balance += amount;
 	}
 	
-	public double doWithdraw(double withdraw) {
-		return this.balance -= withdraw + 5.00;
+	public void withdraw(double amount) {
+		balance -= amount + 5.0;
 	}
 }
